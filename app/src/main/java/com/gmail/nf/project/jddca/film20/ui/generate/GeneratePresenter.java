@@ -42,9 +42,9 @@ public class GeneratePresenter implements GenerateContract.Presenter {
 
     @Override
     public void onLoad() {
-        restLoader.getRandomFilm()
+        cacheSubscribe.add(restLoader.getRandomFilm()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showFilm);
+                .subscribe(view::showFilm));
     }
 }
