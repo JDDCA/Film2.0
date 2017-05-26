@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_generate"
+        icon="@drawable/generate_film"
+        title="Generate" />
+    <tab
+        id="@+id/tab_newfilms"
+        icon="@drawable/new_films"
+        title="New Films" />
+</tabs>

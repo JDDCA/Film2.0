@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Film2.0</string>
     <string name="key">ba8e8a114ce7fc27aa71ebec8c0b1afe</string>
+    <string name="generate">Generate</string>
 </resources>
