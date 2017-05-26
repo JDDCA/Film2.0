@@ -1,10 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.gmail.nf.project.jddca.film20"
+        applicationId "com.gmail.nf.project.jddca.film"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
@@ -15,7 +16,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_KEY", "ba8e8a114ce7fc27aa71ebec8c0b1afe"
+            buildConfigField "String", "SERVER_PREFIX", "api.themoviedb.org"
+            buildConfigField "String", "SERVER_VERSION", "3"
         }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -24,7 +34,55 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+
+    def butterKnifeLibVersion = '8.5.1'
+    def lombokLib = '1.12.6'
+    def rxAndroid = '2.0.1'
+    def rxJava = '2.0.6'
+    def daggerLib = '2.10'
+    def androidSupportLib = '25.3.1'
+    def retrofitLib = '2.2.0'
+
+    //Retrofit 2
+    compile 'com.squareup.retrofit2:retrofit:' + retrofitLib
+    compile 'com.squareup.retrofit2:adapter-rxjava2:' + retrofitLib
+    compile 'com.squareup.retrofit2:converter-gson:' + retrofitLib
+
+    //EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    // ButterKnife
+    compile 'com.jakewharton:butterknife:' + butterKnifeLibVersion
+    annotationProcessor 'com.jakewharton:butterknife-compiler:' + butterKnifeLibVersion
+
+    //Lombok
+    provided 'org.projectlombok:lombok:' + lombokLib
+
+    //RxJava
+    compile 'io.reactivex.rxjava2:rxjava:' + rxJava
+    compile 'io.reactivex.rxjava2:rxandroid:' + rxAndroid
+
+    //Dagger2
+    compile 'com.google.dagger:dagger-android:' + daggerLib
+    annotationProcessor "com.google.dagger:dagger-compiler:" + daggerLib
+    compile 'com.google.dagger:dagger-android-support:' + daggerLib
+    annotationProcessor 'com.google.dagger:dagger-android-processor:' + daggerLib
+
+    //Support
+    compile 'com.android.support:appcompat-v7:' + androidSupportLib
+    compile 'com.android.support:recyclerview-v7:' + androidSupportLib
+    compile 'com.android.support:design:' + androidSupportLib
+    compile 'com.android.support:cardview-v7:' + androidSupportLib
+
+    //UI
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //Tests
     testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.3.2"
+    androidTestCompile 'com.google.code.findbugs:jsr305:3.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
+apply plugin: 'com.jakewharton.butterknife'
