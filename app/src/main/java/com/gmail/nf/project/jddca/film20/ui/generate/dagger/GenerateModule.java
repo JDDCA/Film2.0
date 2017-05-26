@@ -2,6 +2,7 @@ package com.gmail.nf.project.jddca.film20.ui.generate.dagger;
 
 import android.content.Context;
 
+import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
 import com.gmail.nf.project.jddca.film20.ui.generate.GenerateContract;
 import com.gmail.nf.project.jddca.film20.ui.generate.GeneratePresenter;
 
@@ -18,7 +19,7 @@ public class GenerateModule {
     }
 
     @Provides
-    GenerateContract.Presenter providePresenter (Context context){
-        return new GeneratePresenter(view,context);
+    GenerateContract.Presenter providePresenter (Context context, RestLoader loader){
+        return new GeneratePresenter(view,context,loader);
     }
 }

@@ -1,6 +1,7 @@
 package com.gmail.nf.project.jddca.film20.data.net;
 
 import com.gmail.nf.project.jddca.film20.di.dagger.AppScope;
+import com.gmail.nf.project.jddca.film20.domain.rest.RestService;
 
 import dagger.Module;
 import dagger.Provides;
@@ -24,5 +25,10 @@ public class NetModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
+    }
+
+    @Provides @AppScope
+    RestService provideRestService (Retrofit retrofit){
+        return retrofit.create(RestService.class);
     }
 }

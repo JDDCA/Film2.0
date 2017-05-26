@@ -12,6 +12,10 @@ import retrofit2.http.Query;
 
 public interface RestService {
 
+    int MAX_PAGES = 1000;
+    String INCLUDE_ABULT = "false";
+
+
     @GET("genre/movie/list")
     Observable<Genres> getGenres (@Query("api_key") String key, @Query("language") String language);
 

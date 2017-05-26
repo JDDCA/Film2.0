@@ -6,6 +6,7 @@ import com.gmail.nf.project.jddca.film20.data.net.NetModule;
 import com.gmail.nf.project.jddca.film20.di.dagger.AppComponent;
 import com.gmail.nf.project.jddca.film20.di.dagger.AppModule;
 import com.gmail.nf.project.jddca.film20.di.dagger.DaggerAppComponent;
+import com.gmail.nf.project.jddca.film20.domain.loader.dagger.LoaderModule;
 import com.gmail.nf.project.jddca.film20.ui.generate.GenerateContract;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateComponent;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateModule;
@@ -26,6 +27,7 @@ public class ComponentsHolder {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(context))
                 .netModule(new NetModule(BASE_URL))
+                .loaderModule(new LoaderModule())
                 .build();
     }
 

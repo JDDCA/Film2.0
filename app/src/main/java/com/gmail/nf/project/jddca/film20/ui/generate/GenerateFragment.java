@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.nf.project.jddca.film20.App;
+import com.gmail.nf.project.jddca.film20.data.model.Film;
 
 import javax.inject.Inject;
 
@@ -26,7 +27,7 @@ public class GenerateFragment extends Fragment implements GenerateContract.View{
     }
 
     @Override
-    public void showFilm(Movie movie) {
+    public void showFilm(Film film) {
 
     }
 
