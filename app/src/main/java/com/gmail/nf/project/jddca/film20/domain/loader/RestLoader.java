@@ -4,11 +4,13 @@ package com.gmail.nf.project.jddca.film20.domain.loader;
 import android.content.Context;
 
 import com.gmail.nf.project.jddca.film20.data.model.Film;
+import com.gmail.nf.project.jddca.film20.data.model.Genre;
 import com.gmail.nf.project.jddca.film20.data.model.Genres;
 import com.gmail.nf.project.jddca.film20.domain.rest.RestService;
 import com.gmail.nf.project.jddca.film20.domain.utils.KeyService;
 import com.gmail.nf.project.jddca.film20.domain.utils.LocalService;
 
+import java.util.List;
 import java.util.Random;
 
 import io.reactivex.Observable;
@@ -16,16 +18,21 @@ import io.reactivex.Observable;
 public class RestLoader {
 
     private final RestService restService;
-    private final Context context;
+    private String apiKey;
+    private String locale;
 
     public RestLoader(RestService restService, Context context) {
         this.restService = restService;
-        this.context = context;
+        apiKey = KeyService.getApiKey(context);
+        locale = LocalService.getLocales(context);
+    }
+
+    public Observable<List<Genre>> getGenres (){
+        return restService.getGenres(apiKey,locale)
+                .map(Genres::getGenres);
     }
 
     public Observable<Film> getRandomFilm() {
-        String apiKey = KeyService.getApiKey(context);
-        String locale = LocalService.getLocales(context);
         return restService.getGenres(apiKey, locale)
                 .map(genres -> genres.getGenres().get(new Random(System.currentTimeMillis()).nextInt(genres.getGenres().size())))
                 .flatMap(genre -> restService.getPages(Integer.toString(genre.getId()), apiKey, locale))

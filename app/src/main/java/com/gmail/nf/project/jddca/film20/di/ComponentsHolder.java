@@ -7,6 +7,9 @@ import com.gmail.nf.project.jddca.film20.di.dagger.AppComponent;
 import com.gmail.nf.project.jddca.film20.di.dagger.AppModule;
 import com.gmail.nf.project.jddca.film20.di.dagger.DaggerAppComponent;
 import com.gmail.nf.project.jddca.film20.domain.loader.dagger.LoaderModule;
+import com.gmail.nf.project.jddca.film20.ui.filter.FilterContract;
+import com.gmail.nf.project.jddca.film20.ui.filter.dagger.FilterComponent;
+import com.gmail.nf.project.jddca.film20.ui.filter.dagger.FilterModule;
 import com.gmail.nf.project.jddca.film20.ui.generate.GenerateContract;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateComponent;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateModule;
@@ -18,6 +21,8 @@ public class ComponentsHolder {
 
     private AppComponent appComponent;
     private GenerateComponent generateComponent;
+
+    private FilterComponent filterComponent;
 
     public ComponentsHolder(Context context) {
         this.context = context;
@@ -35,11 +40,17 @@ public class ComponentsHolder {
         return appComponent;
     }
 
-    public GenerateComponent generateComponent (GenerateContract.View view){
+    public GenerateComponent getGenerateComponent(GenerateContract.View view){
         return generateComponent != null ? generateComponent : getAppComponent().createGenerateComponent(new GenerateModule(view));
+    }
+    public FilterComponent getFilterComponent(FilterContract.View view){
+        return filterComponent != null ? filterComponent : getAppComponent().createFilterComponent(new FilterModule(view));
     }
 
     public void releaseGenerateComponent (){
         generateComponent = null;
+    }
+    public void releaseFilterComponent (){
+        filterComponent = null;
     }
 }

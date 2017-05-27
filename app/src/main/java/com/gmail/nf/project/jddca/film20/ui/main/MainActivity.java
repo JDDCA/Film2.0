@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
+import com.gmail.nf.project.jddca.film20.ui.filter.FilterFragment;
 import com.gmail.nf.project.jddca.film20.ui.generate.GenerateFragment;
 import com.roughike.bottombar.BottomBar;
 
@@ -20,12 +21,16 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.titleToolbar) TextView title;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.bottomBar) BottomBar bottomBar;
+    @BindView(R.id.titleToolbar)
+    TextView title;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.bottomBar)
+    BottomBar bottomBar;
 
 
-    @BindString(R.string.generate) String titleGenerate;
+    @BindString(R.string.generate)
+    String titleGenerate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         bottomBar.setOnTabSelectListener(tabId -> {
-            if (tabId == R.id.tab_generate){
+            if (tabId == R.id.tab_generate) {
 
-            }else if (tabId == R.id.tab_newfilms){
+            } else if (tabId == R.id.tab_newfilms) {
 
             }
         });
@@ -63,7 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        item.getTitle();
+        switch (item.getItemId()) {
+            case R.id.minSettings:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contentContainer, new FilterFragment())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commit();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

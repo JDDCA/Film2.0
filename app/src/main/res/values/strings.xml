@@ -3,4 +3,5 @@
     <string name="key">ba8e8a114ce7fc27aa71ebec8c0b1afe</string>
     <string name="generate">Generate</string>
     <string name="defuultDescriptionFilm">Movie has not description. Sorry.</string>
+    <string name="genreFilter">Filter by genre</string>
 </resources>

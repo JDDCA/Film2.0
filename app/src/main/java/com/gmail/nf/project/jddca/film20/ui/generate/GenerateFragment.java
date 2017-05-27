@@ -37,7 +37,7 @@ public class GenerateFragment extends Fragment implements GenerateContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.generate_fragment, container, false);
-        App.getApp(getActivity()).getComponentsHolder().generateComponent(this).inject(this);
+        App.getApp(getActivity()).getComponentsHolder().getGenerateComponent(this).inject(this);
         unbinder = ButterKnife.bind(this,rootView);
         presenter.onLoad();
         return rootView;
@@ -45,6 +45,7 @@ public class GenerateFragment extends Fragment implements GenerateContract.View{
 
     @Override
     public void onDestroyView() {
+        presenter.onStop();
         App.getApp(getActivity()).getComponentsHolder().releaseGenerateComponent();
         unbinder.unbind();
         super.onDestroyView();
