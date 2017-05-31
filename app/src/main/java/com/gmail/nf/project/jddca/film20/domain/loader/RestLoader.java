@@ -6,6 +6,7 @@ import android.content.Context;
 import com.gmail.nf.project.jddca.film20.data.model.Film;
 import com.gmail.nf.project.jddca.film20.data.model.Genre;
 import com.gmail.nf.project.jddca.film20.data.model.Genres;
+import com.gmail.nf.project.jddca.film20.data.model.UpcomingMovie;
 import com.gmail.nf.project.jddca.film20.domain.rest.RestService;
 import com.gmail.nf.project.jddca.film20.domain.utils.KeyService;
 import com.gmail.nf.project.jddca.film20.domain.utils.LocalService;
@@ -42,5 +43,11 @@ public class RestLoader {
                     return restService.getPage(Integer.toString(totalPage.getId()), apiKey, locale, RestService.INCLUDE_ABULT, page);
                 })
                 .map(pageMovieForGenre -> pageMovieForGenre.getResults().get(new Random(System.currentTimeMillis()).nextInt(pageMovieForGenre.getResults().size())));
+    }
+
+    public Observable<List<Film>> getUpcomingFilms() {
+        return restService.getUpcomingMovie(apiKey, locale)
+                .map(UpcomingMovie::getResults)
+                .take(10);
     }
 }

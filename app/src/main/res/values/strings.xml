@@ -4,4 +4,7 @@
     <string name="generate">Generate</string>
     <string name="defuultDescriptionFilm">Movie has not description. Sorry.</string>
     <string name="genreFilter">Filter by genre</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
