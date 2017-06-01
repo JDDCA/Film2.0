@@ -19,12 +19,6 @@ public class App extends Application implements HasActivityInjector {
 
     @Inject
     DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
-//
-//    private ComponentsHolder componentsHolder;
-//
-//    public static App getApp(Context context) {
-//        return (App)context.getApplicationContext();
-//    }
 
     @Inject
     public App() {
@@ -40,13 +34,7 @@ public class App extends Application implements HasActivityInjector {
                 .appModule(new AppModule(this))
                 .build()
                 .inject(this);
-//        componentsHolder = new ComponentsHolder(this);
-//        componentsHolder.init();
     }
-
-//    public ComponentsHolder getComponentsHolder() {
-//        return componentsHolder;
-//    }
 
     @Override
     public AndroidInjector<Activity> activityInjector() {

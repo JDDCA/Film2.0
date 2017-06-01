@@ -2,7 +2,6 @@ package com.gmail.nf.project.jddca.film20.ui.upcoming;
 
 import android.util.Log;
 
-import com.gmail.nf.project.jddca.film20.data.model.Film;
 import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
 
 import java.util.HashSet;
@@ -14,7 +13,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-
 
 
 public class UpcomingPresenter implements Upcoming.Presenter {
@@ -36,14 +34,9 @@ public class UpcomingPresenter implements Upcoming.Presenter {
     public void onLoad() {
         Log.d(TAG, "onLoad: before OnLoad invoke Rx");
         restLoader.getUpcomingFilms()
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(films -> {
-                    view.showFilms(films);
-                    for (Film film : films) {
-                        Log.d(TAG, "onLoad: " + film.toString());
-                    }
-                }, view::showError);
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(view::showFilms, view::showError);
         Log.d(TAG, "onLoad: after onLoad invoke Rx");
     }
 

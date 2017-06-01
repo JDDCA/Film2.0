@@ -11,5 +11,4 @@ public interface UpcomingSubComponent extends AndroidInjector<UpcomingFragment> 
     @Subcomponent.Builder
     abstract class Builder extends AndroidInjector.Builder<UpcomingFragment> {}
 
-//    void inject(UpcomingFragment fragment);
 }

@@ -1,8 +1,6 @@
 package com.gmail.nf.project.jddca.film20.ui.generate;
 
 
-import android.content.Context;
-
 import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
 
 import java.util.HashSet;

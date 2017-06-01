@@ -1,6 +1,7 @@
 package com.gmail.nf.project.jddca.film20.ui.upcoming;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.model.Film;
 import com.gmail.nf.project.jddca.film20.domain.utils.ApiService;
-import com.gmail.nf.project.jddca.film20.domain.utils.NetworkService;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,7 +30,6 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
     public UpcomingAdapter() {
         films = new ArrayList<>();
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -51,7 +50,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
         holder.title.setText(film.getTitle());
 
         if (film.getOverview() == null && film.getOverview().length() < 0) {
-            holder.description.setText(holder.defaultDescruptionFilm);
+            holder.description.setText(holder.defaultDescriptionFilm);
         } else {
             holder.description.setText(film.getOverview());
         }
@@ -70,8 +69,11 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
 
         Context context;
 
+        @BindView(R.id.upc_card_view)
+        CardView cardView;
+
         @BindString(R.string.defuultDescriptionFilm)
-        String defaultDescruptionFilm;
+        String defaultDescriptionFilm;
 
         @BindView(R.id.upc_title)
         TextView title;

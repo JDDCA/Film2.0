@@ -10,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gmail.nf.project.jddca.film20.App;
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.model.Film;
-import com.gmail.nf.project.jddca.film20.ui.upcoming.dagger.UpcomingModule;
 
 import java.util.List;
 
@@ -22,9 +20,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
-import dagger.android.support.DaggerFragment_MembersInjector;
 
 
 /**
@@ -37,6 +33,7 @@ public class UpcomingFragment extends Fragment implements Upcoming.View{
 
     Unbinder unbinder;
 
+    @BindView(R.id.upcoming_rv)
     RecyclerView recyclerView;
 
     UpcomingAdapter upcomingAdapter;
@@ -55,9 +52,7 @@ public class UpcomingFragment extends Fragment implements Upcoming.View{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
-//        App.getApp(getActivity()).getComponentsHolder().getUpcomingComponent(this).inject(this);
         unbinder = ButterKnife.bind(view);
-        recyclerView = (RecyclerView) view.findViewById(R.id.upcoming_rv);
         upcomingAdapter = new UpcomingAdapter();
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -69,7 +64,6 @@ public class UpcomingFragment extends Fragment implements Upcoming.View{
     @Override
     public void onDestroyView() {
         presenter.onStop();
-//        App.getApp(getActivity()).getComponentsHolder().releaseUpcomingComponent();
         unbinder.unbind();
         super.onDestroyView();
     }

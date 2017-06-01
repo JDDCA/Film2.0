@@ -11,5 +11,4 @@ public interface GenerateSubComponent extends AndroidInjector<GenerateFragment>{
     @Subcomponent.Builder
     abstract class Builder extends AndroidInjector.Builder<GenerateFragment> {}
 
-//    void inject (GenerateFragment fragment);
 }

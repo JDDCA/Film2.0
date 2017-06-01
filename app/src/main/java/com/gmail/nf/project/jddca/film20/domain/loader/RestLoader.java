@@ -47,7 +47,7 @@ public class RestLoader {
     }
 
     public Observable<List<Film>> getUpcomingFilms() {
-        return restService.getUpcomingMovie(apiKey, locale, PAGE)
-                .map(UpcomingMovie::getResults).take(10);
+        return restService.getUpcomingMovie(apiKey, locale)
+                .map(UpcomingMovie::getResults);
     }
 }

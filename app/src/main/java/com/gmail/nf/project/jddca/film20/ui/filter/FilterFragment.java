@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gmail.nf.project.jddca.film20.App;
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.model.Genre;
 import com.gmail.nf.project.jddca.film20.ui.utils.adapter.GenreAdapter;

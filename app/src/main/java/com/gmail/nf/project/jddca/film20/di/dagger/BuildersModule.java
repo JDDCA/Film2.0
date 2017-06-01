@@ -20,19 +20,16 @@ import dagger.multibindings.IntoMap;
 @Module (subcomponents = {MainActivitySubComponent.class, UpcomingSubComponent.class, GenerateSubComponent.class})
 public abstract class BuildersModule {
 
-    // TODO : Прописать в аргумент компонент MainActivity
     @Binds
     @IntoMap
     @ActivityKey(MainActivity.class)
     abstract AndroidInjector.Factory<? extends Activity> bindMainActivityInjectorFactory(MainActivitySubComponent.Builder builder);
 
-    // TODO : Прописать в аргумент компонент GenerateFragment
     @Binds
     @IntoMap
     @FragmentKey(GenerateFragment.class)
     abstract AndroidInjector.Factory<? extends Fragment> bindGenerateFragmentInjectorFactory(GenerateSubComponent.Builder builder);
 
-    // TODO : Прописать в аргумент компонент UpcomingFragment
     @Binds
     @IntoMap
     @FragmentKey(UpcomingFragment.class)

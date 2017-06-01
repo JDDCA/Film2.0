@@ -13,7 +13,6 @@ public class ApiService {
         return context.getResources().getString(R.string.key);
     }
 
-
     public static String getLocales(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
             return context.getResources().getConfiguration().locale.toString();
