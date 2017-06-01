@@ -36,7 +36,7 @@ dependencies {
     def lombokLib = '1.12.6'
     def rxAndroid = '2.0.1'
     def rxJava = '2.0.6'
-    def daggerLib = '2.10'
+    def daggerLib = '2.11'
     def androidSupportLib = '25.3.1'
     def retrofitLib = '2.2.0'
 

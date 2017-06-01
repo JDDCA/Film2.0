@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 public interface RestService {
 
     int MAX_PAGES = 1000;
-    String INCLUDE_ABULT = "false";
+    String INCLUDE_ADULT = "false";
 
 
     @GET("genre/movie/list")
@@ -26,5 +26,5 @@ public interface RestService {
     Observable <PageMovieForGenre> getPage (@Path("genre_id") String genreId, @Query("api_key") String key, @Query("language") String language,@Query("include_adult") String adult, @Query("page") int pageInt);
 
     @GET("movie/upcoming")
-    Observable<UpcomingMovie> getUpcomingMovie(@Query("key") String key, @Query("lang") String lang);
+    Observable<UpcomingMovie> getUpcomingMovie(@Query("key") String key, @Query("lang") String lang, @Query("page") Integer page);
 }

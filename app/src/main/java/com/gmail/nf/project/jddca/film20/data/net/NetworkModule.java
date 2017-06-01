@@ -10,12 +10,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
-public class NetModule {
+public class NetworkModule {
 
-    private final String baseUrl;
+    private static final String BASE_URL = "https://api.themoviedb.org/3/";
 
-    public NetModule(String baseUrl) {
-        this.baseUrl = baseUrl;
+    public NetworkModule() {
     }
 
     @Provides @AppScope
@@ -23,7 +22,7 @@ public class NetModule {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(baseUrl)
+                .baseUrl(BASE_URL)
                 .build();
     }
 
@@ -31,4 +30,6 @@ public class NetModule {
     RestService provideRestService (Retrofit retrofit){
         return retrofit.create(RestService.class);
     }
+
+
 }

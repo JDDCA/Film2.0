@@ -1,10 +1,11 @@
 package com.gmail.nf.project.jddca.film20.ui.upcoming;
 
-import android.content.Context;
-import android.widget.ProgressBar;
+import android.util.Log;
 
+import com.gmail.nf.project.jddca.film20.data.model.Film;
 import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -14,27 +15,36 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+
+
 public class UpcomingPresenter implements Upcoming.Presenter {
+
+    private static final String TAG = "Upc";
 
     private Upcoming.View view;
     private RestLoader restLoader;
     private Set<Disposable> disposables;
-    private ProgressBar progressBar;
 
     @Inject
     public UpcomingPresenter(Upcoming.View view, RestLoader restLoader) {
         this.view = view;
         this.restLoader = restLoader;
+        disposables = new HashSet<>();
     }
 
     @Override
     public void onLoad() {
-        progressBar.setVisibility(ProgressBar.VISIBLE);
-        disposables.add(restLoader.getUpcomingFilms()
+        Log.d(TAG, "onLoad: before OnLoad invoke Rx");
+        restLoader.getUpcomingFilms()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(view::showFilms, view::showError));
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
+                .subscribe(films -> {
+                    view.showFilms(films);
+                    for (Film film : films) {
+                        Log.d(TAG, "onLoad: " + film.toString());
+                    }
+                }, view::showError);
+        Log.d(TAG, "onLoad: after onLoad invoke Rx");
     }
 
     @Override

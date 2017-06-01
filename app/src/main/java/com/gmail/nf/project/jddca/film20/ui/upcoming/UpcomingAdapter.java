@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.model.Film;
+import com.gmail.nf.project.jddca.film20.domain.utils.ApiService;
+import com.gmail.nf.project.jddca.film20.domain.utils.NetworkService;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -26,17 +27,15 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
     @Setter
     private List<Film> films;
 
-    @Inject
-    public UpcomingAdapter(List<Film> films) {
-        this.films = films;
+    public UpcomingAdapter() {
+        films = new ArrayList<>();
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        ViewHolder vh = new ViewHolder(view);
-
-        return vh;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
         Film film = films.get(position);
 
         Picasso.with(holder.context)
-                .load(film.getPosterPath())
+                .load(ApiService.IMG_URL + film.getPosterPath())
                 .resize(holder.poster.getMeasuredWidth(), holder.poster.getMeasuredHeight())
                 .centerCrop()
                 .into(holder.poster);
@@ -65,6 +64,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
     public int getItemCount() {
         return films.size();
     }
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
 

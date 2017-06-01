@@ -36,7 +36,7 @@ public class FilterFragment extends Fragment implements FilterContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.filter_fragment, container, false);
-        App.getApp(getActivity()).getComponentsHolder().getFilterComponent(this).inject(this);
+//        App.getApp(getActivity()).getComponentsHolder().getFilterComponent(this).inject(this);
         unbinder = ButterKnife.bind(this,rootView);
         initRecyclerView();
         presenter.onStart();
@@ -53,7 +53,7 @@ public class FilterFragment extends Fragment implements FilterContract.View {
     public void onDestroyView() {
         presenter.onStop();
         unbinder.unbind();
-        App.getApp(getActivity()).getComponentsHolder().releaseFilterComponent();
+//        App.getApp(getActivity()).getComponentsHolder().releaseFilterComponent();
         super.onDestroyView();
     }
 

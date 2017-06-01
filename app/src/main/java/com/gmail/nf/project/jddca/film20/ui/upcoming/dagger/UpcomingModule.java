@@ -1,35 +1,29 @@
 package com.gmail.nf.project.jddca.film20.ui.upcoming.dagger;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-
-import com.gmail.nf.project.jddca.film20.data.model.Film;
-import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
+import com.gmail.nf.project.jddca.film20.di.dagger.AppScope;
+import com.gmail.nf.project.jddca.film20.ui.generate.Generate;
 import com.gmail.nf.project.jddca.film20.ui.upcoming.Upcoming;
-import com.gmail.nf.project.jddca.film20.ui.upcoming.UpcomingAdapter;
-import com.gmail.nf.project.jddca.film20.ui.upcoming.UpcomingPresenter;
+import com.gmail.nf.project.jddca.film20.ui.upcoming.UpcomingFragment;
 
-import java.util.List;
-
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class UpcomingModule {
+public abstract class UpcomingModule {
+//
+//    private final Upcoming.View view;
+//
+//    public UpcomingModule(Upcoming.View view) {
+//        this.view = view;
+//    }
+//
+//    @Provides
+//    Upcoming.View provideView() {
+//        return view;
+//    }
 
-    private final Upcoming.View view;
+    @Binds
+    abstract Upcoming.View provideView (UpcomingFragment fragment);
 
-    public UpcomingModule(Upcoming.View view) {
-        this.view = view;
-    }
-
-    @Provides
-    Upcoming.Presenter providePresenter(RestLoader restLoader) {
-        return new UpcomingPresenter(view, restLoader);
-    }
-
-    @Provides
-    RecyclerView.Adapter provideAdapter(List<Film> films) {
-        return new UpcomingAdapter(films);
-    }
 }

@@ -5,7 +5,7 @@ import android.graphics.Movie;
 
 import com.gmail.nf.project.jddca.film20.data.model.Film;
 
-public interface GenerateContract {
+public interface Generate {
 
     interface View {
 

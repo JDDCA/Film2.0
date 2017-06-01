@@ -5,7 +5,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class NetService {
+public class NetworkService {
+
 
     // TODO: 26.05.2017 add second method with request
     public static boolean isInternet (Context context){

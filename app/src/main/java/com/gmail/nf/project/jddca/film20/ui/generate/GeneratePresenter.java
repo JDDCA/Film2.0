@@ -15,17 +15,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class GeneratePresenter implements GenerateContract.Presenter {
+public class GeneratePresenter implements Generate.Presenter {
 
     private RestLoader restLoader;
-    private GenerateContract.View view;
-    private Context context;
+    private Generate.View view;
+
     private final Set<Disposable> cacheSubscribe;
 
     @Inject
-    public GeneratePresenter(GenerateContract.View view, Context context, RestLoader restLoader) {
+    public GeneratePresenter(Generate.View view, RestLoader restLoader) {
         this.view = view;
-        this.context = context;
         this.restLoader = restLoader;
         this.cacheSubscribe = new HashSet<>();
     }
@@ -42,6 +41,7 @@ public class GeneratePresenter implements GenerateContract.Presenter {
 
     @Override
     public void onLoad() {
+        // TODO : Создать ProgressBar при обработке запроса
         cacheSubscribe.add(restLoader.getRandomFilm()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

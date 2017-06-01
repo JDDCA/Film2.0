@@ -10,7 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class LoaderModule {
+public class DataModule {
 
     @Provides @AppScope
     RestLoader provideRestLoader (RestService restService, Context context){
