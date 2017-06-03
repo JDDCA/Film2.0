@@ -2,11 +2,14 @@ package com.gmail.nf.project.jddca.film20.ui.generate;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,6 +35,9 @@ public class GenerateFragment extends Fragment implements Generate.View {
 
     private Unbinder unbinder;
 
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @BindView(R.id.posterImageView)
     ImageView posterImageView;
 
@@ -44,9 +50,9 @@ public class GenerateFragment extends Fragment implements Generate.View {
     @BindView(R.id.descriptionFilmTextView)
     TextView descriptionFilmTextView;
 
-    @BindView(R.id.generateFAB)
+  /*  @BindView(R.id.generateFAB)
     FloatingActionButton generateFAB;
-
+*/
     @BindString(R.string.defuultDescriptionFilm)
     String defaultDescriptionFilm;
 
@@ -62,7 +68,15 @@ public class GenerateFragment extends Fragment implements Generate.View {
         View rootView = inflater.inflate(R.layout.generate_fragment, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         presenter.onLoad();
-        generateFAB.setOnClickListener(v -> presenter.onLoad());
+        // TODO : Разобраться как работает Swipe Refresh Layout
+
+        swipeRefreshLayout.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN);
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(false);
+            presenter.onLoad();
+        });
+//        generateFAB.setOnClickListener(v -> presenter.onLoad());
         return rootView;
     }
 
@@ -74,16 +88,32 @@ public class GenerateFragment extends Fragment implements Generate.View {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.refresh) {
+            swipeRefreshLayout.setOnRefreshListener(() -> {
+                swipeRefreshLayout.setRefreshing(false);
+                presenter.onLoad();
+            });
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void showFilm(Film film) {
 
-        Picasso.with(getContext())
-                .load(ApiService.IMG_URL + film.getPosterPath())
-                .resize(posterImageView.getMeasuredWidth(), posterImageView.getMeasuredHeight())
-                .centerCrop()
-                .into(posterImageView);
+        if (film.getPosterPath() != null) {
+            Picasso.with(getContext())
+                    .load(ApiService.IMG_URL + film.getPosterPath())
+//                    .resize(posterImageView.getMeasuredWidthAndState(), posterImageView.getHeight())
+//                    .centerCrop()
+                    .into(posterImageView);
+        } else {
+            posterImageView.setImageResource(R.drawable.img_not_available);
+        }
 
         titleFilmTextView.setText(film.getTitle());
-        yearFilmTextView.setText(film.getReleaseDate());
+        String formatDate = film.getReleaseDate().substring(0, 4);
+        yearFilmTextView.setText(formatDate);
         if (film.getOverview() != null && film.getOverview().length() > 0)
             descriptionFilmTextView.setText(film.getOverview());
         else descriptionFilmTextView.setText(defaultDescriptionFilm);
