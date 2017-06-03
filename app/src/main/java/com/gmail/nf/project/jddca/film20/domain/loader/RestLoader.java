@@ -46,8 +46,10 @@ public class RestLoader {
                 .map(pageMovieForGenre -> pageMovieForGenre.getResults().get(new Random(System.currentTimeMillis()).nextInt(pageMovieForGenre.getResults().size())));
     }
 
-    public Observable<List<Film>> getUpcomingFilms() {
-        return restService.getUpcomingMovie(apiKey, locale)
+    public Observable<List<Film>> getUpcomingFilmsByPage(Integer page) {
+        return restService.getUpcomingMovieByPage(apiKey, locale, page)
                 .map(UpcomingMovie::getResults);
     }
+
+
 }

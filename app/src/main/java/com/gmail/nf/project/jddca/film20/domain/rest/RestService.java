@@ -27,4 +27,8 @@ public interface RestService {
 
     @GET("movie/upcoming")
     Observable<UpcomingMovie> getUpcomingMovie(@Query("key") String key, @Query("lang") String lang);
+
+    @GET("movie/upcoming")
+    Observable<UpcomingMovie> getUpcomingMovieByPage(@Query("key") String key, @Query("lang") String lang, @Query("page") Integer page);
+
 }

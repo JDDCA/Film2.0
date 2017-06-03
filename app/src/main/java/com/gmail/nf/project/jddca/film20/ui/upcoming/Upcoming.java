@@ -13,7 +13,7 @@ public interface Upcoming {
     }
 
     interface Presenter {
-        void onLoad();
+        void onLoad(Integer page);
 
         void onStop();
     }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.model.Film;
@@ -26,17 +27,24 @@ import dagger.android.support.AndroidSupportInjection;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UpcomingFragment extends Fragment implements Upcoming.View{
+public class UpcomingFragment extends Fragment implements Upcoming.View {
+
+    private Integer page = 1;
 
     @Inject
     UpcomingPresenter presenter;
 
-    Unbinder unbinder;
+    private Unbinder unbinder;
 
-    @BindView(R.id.upcoming_rv)
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    UpcomingAdapter upcomingAdapter;
+    @BindView(R.id.next_page_btn)
+    Button nextBtn;
+
+    @BindView(R.id.prev_page_btn)
+    Button prevBtn;
+
+    private UpcomingAdapter upcomingAdapter;
 
     public UpcomingFragment() {
         // Required empty public constructor
@@ -51,13 +59,26 @@ public class UpcomingFragment extends Fragment implements Upcoming.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
         unbinder = ButterKnife.bind(view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.upcoming_rv);
         upcomingAdapter = new UpcomingAdapter();
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(upcomingAdapter);
-        presenter.onLoad();
+
+        presenter.onLoad(page);
+
+        nextBtn.setOnClickListener(v -> {
+            presenter.onLoad(page++);
+        });
+
+        prevBtn.setOnClickListener(v -> {
+            presenter.onLoad(page--);
+        });
+
         return view;
     }
 

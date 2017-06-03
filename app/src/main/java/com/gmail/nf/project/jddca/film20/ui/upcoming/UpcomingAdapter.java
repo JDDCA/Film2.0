@@ -41,11 +41,15 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Film film = films.get(position);
 
-        Picasso.with(holder.context)
-                .load(ApiService.IMG_URL + film.getPosterPath())
-                .resize(holder.poster.getMeasuredWidth(), holder.poster.getMeasuredHeight())
-                .centerCrop()
-                .into(holder.poster);
+        if (film.getPosterPath() != null) {
+            Picasso.with(holder.context)
+                    .load(ApiService.IMG_URL + film.getPosterPath())
+                    .resize(holder.poster.getMeasuredWidth(), holder.poster.getMeasuredHeight())
+                    .centerCrop()
+                    .into(holder.poster);
+        } else {
+            holder.poster.setImageResource(R.drawable.img_not_available);
+        }
 
         holder.title.setText(film.getTitle());
 
