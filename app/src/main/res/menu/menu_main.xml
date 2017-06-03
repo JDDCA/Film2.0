@@ -4,7 +4,12 @@
     <item
         android:id="@+id/minSettings"
         android:icon="@drawable/ic_filter_list_white"
-        app:showAsAction="ifRoom"
-        android:title="Settings">
-    </item>
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_refresh_white_24px"
+        android:title="Refresh"
+        app:showAsAction="never" />
 </menu>
