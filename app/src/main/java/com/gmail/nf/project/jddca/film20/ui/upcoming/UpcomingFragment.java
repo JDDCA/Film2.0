@@ -38,12 +38,6 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
 
     private RecyclerView recyclerView;
 
-    @BindView(R.id.next_page_btn)
-    Button nextBtn;
-
-    @BindView(R.id.prev_page_btn)
-    Button prevBtn;
-
     private UpcomingAdapter upcomingAdapter;
 
     public UpcomingFragment() {
@@ -69,15 +63,7 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(upcomingAdapter);
 
-        presenter.onLoad(page);
-
-        nextBtn.setOnClickListener(v -> {
-            presenter.onLoad(page++);
-        });
-
-        prevBtn.setOnClickListener(v -> {
-            presenter.onLoad(page--);
-        });
+        presenter.onLoad();
 
         return view;
     }

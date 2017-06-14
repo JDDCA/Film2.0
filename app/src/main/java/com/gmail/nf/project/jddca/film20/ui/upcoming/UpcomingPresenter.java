@@ -31,12 +31,12 @@ public class UpcomingPresenter implements Upcoming.Presenter {
     }
 
     @Override
-    public void onLoad(Integer page) {
+    public void onLoad() {
         Log.d(TAG, "onLoad: before OnLoad invoke Rx");
-        restLoader.getUpcomingFilmsByPage(page)
+        restLoader.getUpcomingFilms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(view::showFilms, view::showError);
         Log.d(TAG, "onLoad: after onLoad invoke Rx");
     }
 
