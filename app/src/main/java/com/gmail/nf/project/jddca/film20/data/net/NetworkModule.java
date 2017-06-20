@@ -1,7 +1,7 @@
 package com.gmail.nf.project.jddca.film20.data.net;
 
 import com.gmail.nf.project.jddca.film20.di.dagger.AppScope;
-import com.gmail.nf.project.jddca.film20.domain.rest.RestService;
+import com.gmail.nf.project.jddca.film20.model.rest.RestService;
 
 import dagger.Module;
 import dagger.Provides;

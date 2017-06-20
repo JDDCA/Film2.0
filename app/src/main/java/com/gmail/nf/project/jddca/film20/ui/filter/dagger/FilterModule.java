@@ -1,6 +1,6 @@
 package com.gmail.nf.project.jddca.film20.ui.filter.dagger;
 
-import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
+import com.gmail.nf.project.jddca.film20.model.loader.RestLoader;
 import com.gmail.nf.project.jddca.film20.ui.filter.FilterContract;
 import com.gmail.nf.project.jddca.film20.ui.filter.FilterPresenter;
 

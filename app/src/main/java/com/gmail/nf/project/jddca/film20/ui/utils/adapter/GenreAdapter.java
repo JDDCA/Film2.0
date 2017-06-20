@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
-import com.gmail.nf.project.jddca.film20.data.model.Genre;
+import com.gmail.nf.project.jddca.film20.data.domain.Genre;
 
 import java.util.ArrayList;
 import java.util.List;

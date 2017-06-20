@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.nf.project.jddca.film20.R;
-import com.gmail.nf.project.jddca.film20.data.model.Genre;
+import com.gmail.nf.project.jddca.film20.data.domain.Genre;
 import com.gmail.nf.project.jddca.film20.ui.utils.adapter.GenreAdapter;
 
 import java.util.List;

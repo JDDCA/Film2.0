@@ -7,7 +7,7 @@ import android.app.Application;
 import com.gmail.nf.project.jddca.film20.data.net.NetworkModule;
 import com.gmail.nf.project.jddca.film20.di.dagger.AppModule;
 import com.gmail.nf.project.jddca.film20.di.dagger.DaggerAppComponent;
-import com.gmail.nf.project.jddca.film20.domain.loader.dagger.DataModule;
+import com.gmail.nf.project.jddca.film20.model.loader.dagger.DataModule;
 
 import javax.inject.Inject;
 

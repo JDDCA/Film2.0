@@ -1,4 +1,4 @@
-package com.gmail.nf.project.jddca.film20.data.model;
+package com.gmail.nf.project.jddca.film20.data.domain;
 
 
 import com.google.gson.annotations.Expose;

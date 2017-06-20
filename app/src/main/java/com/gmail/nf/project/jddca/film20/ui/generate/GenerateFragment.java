@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -16,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
-import com.gmail.nf.project.jddca.film20.data.model.Film;
-import com.gmail.nf.project.jddca.film20.domain.utils.ApiService;
+import com.gmail.nf.project.jddca.film20.data.domain.Film;
+import com.gmail.nf.project.jddca.film20.model.utils.ApiService;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;

@@ -2,7 +2,7 @@ package com.gmail.nf.project.jddca.film20.di.dagger;
 
 import com.gmail.nf.project.jddca.film20.App;
 import com.gmail.nf.project.jddca.film20.data.net.NetworkModule;
-import com.gmail.nf.project.jddca.film20.domain.loader.dagger.DataModule;
+import com.gmail.nf.project.jddca.film20.model.loader.dagger.DataModule;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateModule;
 import com.gmail.nf.project.jddca.film20.ui.upcoming.dagger.UpcomingModule;
 

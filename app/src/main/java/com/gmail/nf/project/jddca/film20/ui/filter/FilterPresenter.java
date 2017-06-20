@@ -1,7 +1,7 @@
 package com.gmail.nf.project.jddca.film20.ui.filter;
 
 
-import com.gmail.nf.project.jddca.film20.domain.loader.RestLoader;
+import com.gmail.nf.project.jddca.film20.model.loader.RestLoader;
 
 import java.util.HashSet;
 import java.util.Set;

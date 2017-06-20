@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
-import com.gmail.nf.project.jddca.film20.data.model.Film;
-import com.gmail.nf.project.jddca.film20.domain.utils.ApiService;
+import com.gmail.nf.project.jddca.film20.data.domain.Film;
+import com.gmail.nf.project.jddca.film20.model.utils.ApiService;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

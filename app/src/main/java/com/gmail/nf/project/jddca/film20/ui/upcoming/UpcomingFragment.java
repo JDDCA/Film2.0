@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.gmail.nf.project.jddca.film20.R;
-import com.gmail.nf.project.jddca.film20.data.model.Film;
+import com.gmail.nf.project.jddca.film20.data.domain.Film;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.gmail.nf.project.jddca.film20.ui.generate;
 
 
-import com.gmail.nf.project.jddca.film20.data.model.Film;
+import com.gmail.nf.project.jddca.film20.data.domain.Film;
 
 public interface Generate {
 

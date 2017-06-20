@@ -1,14 +1,14 @@
-package com.gmail.nf.project.jddca.film20.domain.loader;
+package com.gmail.nf.project.jddca.film20.model.loader;
 
 
 import android.content.Context;
 
-import com.gmail.nf.project.jddca.film20.data.model.Film;
-import com.gmail.nf.project.jddca.film20.data.model.Genre;
-import com.gmail.nf.project.jddca.film20.data.model.Genres;
-import com.gmail.nf.project.jddca.film20.data.model.UpcomingMovie;
-import com.gmail.nf.project.jddca.film20.domain.rest.RestService;
-import com.gmail.nf.project.jddca.film20.domain.utils.ApiService;
+import com.gmail.nf.project.jddca.film20.data.domain.Film;
+import com.gmail.nf.project.jddca.film20.data.domain.Genre;
+import com.gmail.nf.project.jddca.film20.data.domain.Genres;
+import com.gmail.nf.project.jddca.film20.data.domain.UpcomingMovie;
+import com.gmail.nf.project.jddca.film20.model.rest.RestService;
+import com.gmail.nf.project.jddca.film20.model.utils.ApiService;
 
 import java.util.List;
 import java.util.Random;

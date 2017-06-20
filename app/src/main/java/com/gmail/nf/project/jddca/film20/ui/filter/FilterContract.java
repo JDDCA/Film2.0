@@ -1,7 +1,7 @@
 package com.gmail.nf.project.jddca.film20.ui.filter;
 
 
-import com.gmail.nf.project.jddca.film20.data.model.Genre;
+import com.gmail.nf.project.jddca.film20.data.domain.Genre;
 
 import java.util.List;
 
