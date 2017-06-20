@@ -1,9 +1,9 @@
-package com.gmail.nf.project.jddca.film20.domain.rest;
+package com.gmail.nf.project.jddca.film20.model.rest;
 
 
-import com.gmail.nf.project.jddca.film20.data.model.Genres;
-import com.gmail.nf.project.jddca.film20.data.model.PageMovieForGenre;
-import com.gmail.nf.project.jddca.film20.data.model.UpcomingMovie;
+import com.gmail.nf.project.jddca.film20.data.domain.Genres;
+import com.gmail.nf.project.jddca.film20.data.domain.PageMovieForGenre;
+import com.gmail.nf.project.jddca.film20.data.domain.UpcomingMovie;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.gmail.nf.project.jddca.film20.domain.utils;
+package com.gmail.nf.project.jddca.film20.model.utils;
 
 import android.content.Context;
 import android.os.Build;
