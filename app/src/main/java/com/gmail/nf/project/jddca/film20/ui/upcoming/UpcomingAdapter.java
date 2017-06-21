@@ -16,11 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import butterknife.BindString;
 import butterknife.BindView;
-
 import butterknife.ButterKnife;
 import lombok.Setter;
 
@@ -37,7 +34,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.Upcomi
 
     @Override
     public UpcomingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_upcoming, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.upcoming_card_row, parent, false);
         return new UpcomingViewHolder(view);
     }
 
@@ -48,8 +45,6 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.Upcomi
         if (film.getPosterPath() != null) {
             Picasso.with(context)
                     .load(ApiService.IMG_URL + film.getPosterPath())
-                    .resize(holder.poster.getMeasuredWidth(), holder.poster.getMeasuredHeight())
-                    .centerCrop()
                     .into(holder.poster);
         } else {
             holder.poster.setImageResource(R.drawable.img_not_available);
@@ -63,7 +58,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.Upcomi
             holder.description.setText(film.getOverview());
         }
 
-        holder.releaseDate.setText(R.string.release_date + film.getReleaseDate());
+        holder.releaseDate.setText("Year: " + film.getReleaseDate());
         holder.voteAverage.setText(String.valueOf(film.getVoteAverage()));
     }
 
@@ -76,27 +71,21 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.Upcomi
     class UpcomingViewHolder extends RecyclerView.ViewHolder {
 
         @BindString(R.string.defuultDescriptionFilm)
-        @Nullable
         String defaultDescriptionFilm;
 
         @BindView(R.id.upc_title)
-        @Nullable
         public TextView title;
 
         @BindView(R.id.upc_description)
-        @Nullable
         TextView description;
 
         @BindView(R.id.upc_vote_average)
-        @Nullable
         TextView voteAverage;
 
         @BindView(R.id.upc_poster)
-        @Nullable
         ImageView poster;
 
         @BindView(R.id.upc_release_date)
-        @Nullable
         TextView releaseDate;
 
         UpcomingViewHolder(View itemView) {
