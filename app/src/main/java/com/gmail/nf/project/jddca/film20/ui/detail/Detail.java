@@ -15,6 +15,8 @@ public interface Detail {
     }
 
     interface Presenter {
-        void onLoad();
+        void onLoad(long id);
+
+        void onStop();
     }
 }
