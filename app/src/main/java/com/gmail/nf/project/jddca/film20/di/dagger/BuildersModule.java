@@ -3,6 +3,8 @@ package com.gmail.nf.project.jddca.film20.di.dagger;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
+import com.gmail.nf.project.jddca.film20.ui.detail.DetailFragment;
+import com.gmail.nf.project.jddca.film20.ui.detail.dagger.DetailSubComponent;
 import com.gmail.nf.project.jddca.film20.ui.generate.GenerateFragment;
 import com.gmail.nf.project.jddca.film20.ui.generate.dagger.GenerateSubComponent;
 import com.gmail.nf.project.jddca.film20.ui.main.MainActivity;
@@ -17,7 +19,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 
-@Module (subcomponents = {MainActivitySubComponent.class, UpcomingSubComponent.class, GenerateSubComponent.class})
+@Module (subcomponents = {MainActivitySubComponent.class, UpcomingSubComponent.class, GenerateSubComponent.class, DetailSubComponent.class})
 public abstract class BuildersModule {
 
     @Binds
@@ -35,4 +37,8 @@ public abstract class BuildersModule {
     @FragmentKey(UpcomingFragment.class)
     abstract AndroidInjector.Factory<? extends Fragment> bindUpcomingFragmentInjectorFactory(UpcomingSubComponent.Builder builder);
 
+    @Binds
+    @IntoMap
+    @FragmentKey(DetailFragment.class)
+    abstract AndroidInjector.Factory<? extends Fragment> bindDetailFragmentInjectorFactory(DetailSubComponent.Builder builder);
 }

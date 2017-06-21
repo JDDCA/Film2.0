@@ -4,6 +4,9 @@
     <string name="generate">Generate</string>
     <string name="defuultDescriptionFilm">Movie has not description. Sorry.</string>
     <string name="genreFilter">Filter by genre</string>
-<string name="error">Oops, it seems we have an error! Check the internet or connect with support</string>
+    <string name="error">Oops, it seems we have an error! Check the internet or connect with support</string>
     <string name="release_date">Year: </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
