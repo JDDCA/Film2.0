@@ -51,5 +51,8 @@ public class RestLoader {
                 .map(UpcomingMovie::getResults);
     }
 
+    public Observable<Film> getDetailedFilm(long id) {
+        return restService.getDetailedFilm(apiKey, locale, id);
+    }
 
 }
