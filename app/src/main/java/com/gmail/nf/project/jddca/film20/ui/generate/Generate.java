@@ -9,7 +9,7 @@ public interface Generate {
 
         void showFilm (Film film);
 
-        void showError ();
+        void showError (Throwable throwable);
     }
 
     interface Presenter {

@@ -21,20 +21,20 @@ public class UpcomingPresenter implements Upcoming.Presenter {
     private static final String TAG = "Upc";
 
     private Upcoming.View view;
-    private RestLoader restLoader;
+    private RestLoader mRestLoader;
     private Set<Disposable> disposables;
 
     @Inject
-    public UpcomingPresenter(Upcoming.View view, RestLoader restLoader) {
+    public UpcomingPresenter(Upcoming.View view, RestLoader mRestLoader) {
         this.view = view;
-        this.restLoader = restLoader;
+        this.mRestLoader = mRestLoader;
         disposables = new HashSet<>();
     }
 
     @Override
     public void onLoad() {
         Log.d(TAG, "onLoad: before OnLoad invoke Rx");
-        restLoader.getUpcomingFilms()
+        mRestLoader.getUpcomingFilms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(view::showFilms, view::showError);

@@ -9,68 +9,67 @@
     app:cardElevation="2dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <ImageView
             android:id="@+id/posterImageView"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:contentDescription="@null"
-            tools:src="@drawable/cinema_wallpaper"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp" />
+            android:scaleType="centerCrop"
+            tools:src="@drawable/cinema_wallpaper" />
 
         <TextView
             android:id="@+id/titleFilmTextView"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="serif"
             android:textAlignment="center"
             android:textColor="@color/primary_text"
             android:textSize="18sp"
             tools:text="Title film" />
 
-   <!--     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/generateFAB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_find_replace_white_24px"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintRight_toRightOf="@+id/titleFilmTextView" />
--->
+        <!--     <android.support.design.widget.FloatingActionButton
+                 android:id="@+id/generateFAB"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginBottom="0dp"
+                 android:layout_marginEnd="8dp"
+                 android:layout_marginRight="8dp"
+                 android:layout_marginStart="8dp"
+                 android:src="@drawable/ic_find_replace_white_24px"
+                 app:layout_constraintBottom_toTopOf="@+id/guideline"
+                 app:layout_constraintRight_toRightOf="@+id/titleFilmTextView" />
+     -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_access_time_black_24px"
-                android:layout_marginStart="8dp" />
+                android:src="@drawable/ic_access_time_black_24px" />
 
             <TextView
                 android:id="@+id/yearFilmTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/textSize"
                 android:textStyle="bold"
-                tools:text="year film"
-                android:layout_marginStart="8dp" />
+                tools:text="year film" />
 
         </LinearLayout>
 
@@ -78,10 +77,10 @@
             android:id="@+id/descriptionFilmTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/textSize"
             android:typeface="monospace"

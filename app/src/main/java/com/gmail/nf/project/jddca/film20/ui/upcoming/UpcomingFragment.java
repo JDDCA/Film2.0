@@ -3,13 +3,13 @@ package com.gmail.nf.project.jddca.film20.ui.upcoming;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.domain.Film;
@@ -36,9 +36,11 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
 
     private Unbinder unbinder;
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.upcoming_rv)
+    RecyclerView mRecyclerView;
 
-    private UpcomingAdapter upcomingAdapter;
+    private UpcomingAdapter mUpcomingAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     public UpcomingFragment() {
         // Required empty public constructor
@@ -54,18 +56,18 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
-        unbinder = ButterKnife.bind(view);
-        recyclerView = (RecyclerView) view.findViewById(R.id.upcoming_rv);
-        upcomingAdapter = new UpcomingAdapter();
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        View rootView = inflater.inflate(R.layout.fragment_upcoming, container, false);
+        unbinder = ButterKnife.bind(this, rootView);
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(upcomingAdapter);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mUpcomingAdapter = new UpcomingAdapter(getContext());
+        mRecyclerView.setAdapter(mUpcomingAdapter);
 
         presenter.onLoad();
 
-        return view;
+        return rootView;
     }
 
     @Override
@@ -77,12 +79,13 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
 
     @Override
     public void showFilms(List<Film> films) {
-        upcomingAdapter.setFilms(films);
-        upcomingAdapter.notifyDataSetChanged();
+        mUpcomingAdapter.setFilms(films);
+        mUpcomingAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showError(Throwable throwable) {
-
+        Snackbar.make(getView(), R.string.error, Snackbar.LENGTH_LONG).show();
+        throwable.printStackTrace();
     }
 }

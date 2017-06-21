@@ -32,7 +32,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    def butterKnifeLibVersion = '8.5.1'
+    def butterKnifeLibVersion = '8.6.0'
     def lombokLib = '1.12.6'
     def rxAndroid = '2.0.1'
     def rxJava = '2.0.6'

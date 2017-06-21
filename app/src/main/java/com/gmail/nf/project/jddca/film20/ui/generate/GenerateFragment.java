@@ -5,8 +5,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,13 +31,15 @@ import dagger.android.support.AndroidSupportInjection;
 
 public class GenerateFragment extends Fragment implements Generate.View {
 
+    private final String TAG = getClass().getCanonicalName();
+
     @Inject
     GeneratePresenter presenter;
 
     private Unbinder unbinder;
 
     @BindView(R.id.swipe_container)
-    SwipeRefreshLayout swipeRefreshLayout;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @BindView(R.id.posterImageView)
     ImageView posterImageView;
@@ -69,10 +73,10 @@ public class GenerateFragment extends Fragment implements Generate.View {
         presenter.onLoad();
         // TODO : Разобраться как работает Swipe Refresh Layout
 
-        swipeRefreshLayout.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN);
+        mSwipeRefreshLayout.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN);
 
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            swipeRefreshLayout.setRefreshing(false);
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            mSwipeRefreshLayout.setRefreshing(false);
             presenter.onLoad();
         });
 //        generateFAB.setOnClickListener(v -> presenter.onLoad());
@@ -89,8 +93,8 @@ public class GenerateFragment extends Fragment implements Generate.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.refresh) {
-            swipeRefreshLayout.setOnRefreshListener(() -> {
-                swipeRefreshLayout.setRefreshing(false);
+            mSwipeRefreshLayout.setOnRefreshListener(() -> {
+                mSwipeRefreshLayout.setRefreshing(false);
                 presenter.onLoad();
             });
         }
@@ -119,7 +123,8 @@ public class GenerateFragment extends Fragment implements Generate.View {
     }
 
     @Override
-    public void showError() {
-
+    public void showError(Throwable throwable) {
+        Snackbar.make(getView(), R.string.error, Snackbar.LENGTH_LONG).show();
+        Log.e(TAG, "showError: ", throwable);
     }
 }
