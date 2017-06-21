@@ -86,6 +86,15 @@
             android:typeface="monospace"
             tools:text="description film" />
 
+        <TextView
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/accent"
+            android:text="@string/learn_more"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"

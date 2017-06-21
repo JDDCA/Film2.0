@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gmail.nf.project.jddca.film20.R;
 import com.gmail.nf.project.jddca.film20.data.domain.Film;
@@ -39,6 +40,9 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
     @BindView(R.id.upcoming_rv)
     RecyclerView mRecyclerView;
 
+    @BindView(R.id.upc_learn_more)
+    TextView learnMore;
+
     private UpcomingAdapter mUpcomingAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -66,6 +70,9 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
         mRecyclerView.setAdapter(mUpcomingAdapter);
 
         presenter.onLoad();
+
+        // TODO : Реализовать нажатие на текст для открытия Фрагмента с Детальной информацией по фильму
+//        learnMore.setOnClickListener(view -> );
 
         return rootView;
     }
