@@ -1,8 +1,5 @@
 package com.gmail.nf.project.jddca.film20.ui.upcoming;
 
-import android.util.Log;
-
-
 import com.gmail.nf.project.jddca.film20.model.loader.RestLoader;
 
 import java.util.HashSet;
@@ -33,12 +30,10 @@ public class UpcomingPresenter implements Upcoming.Presenter {
 
     @Override
     public void onLoad() {
-        Log.d(TAG, "onLoad: before OnLoad invoke Rx");
         mRestLoader.getUpcomingFilms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(view::showFilms, view::showError);
-        Log.d(TAG, "onLoad: after onLoad invoke Rx");
     }
 
     @Override
