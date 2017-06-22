@@ -40,10 +40,8 @@ public class UpcomingFragment extends Fragment implements Upcoming.View {
     @BindView(R.id.upcoming_rv)
     RecyclerView mRecyclerView;
 
-    @BindView(R.id.upc_learn_more)
-    TextView learnMore;
-
     private UpcomingAdapter mUpcomingAdapter;
+
     private RecyclerView.LayoutManager mLayoutManager;
 
     public UpcomingFragment() {
